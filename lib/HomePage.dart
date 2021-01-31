@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
 
   Future fetchPost([howMany = 5]) async {
     final response = await http.get(
-        'http://playonnuat-env.eba-ernpdw3w.ap-south-1.elasticbeanstalk.com/api/v1/establishment/test/list?offset=0&limit=3');
+        'http://playonnuat-env.eba-ernpdw3w.ap-south-1.elasticbeanstalk.com/api/v1/establishment/test/list?offset=0&limit=10');
 
     if (response.statusCode == 200) {
       return json.decode(response.body);
@@ -92,6 +92,8 @@ class _HomeState extends State<Home> {
                         itemBuilder: (context, index) {
                           var post = snapshot.data[index];
                           return Card(
+                              shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),),
                             margin: EdgeInsets.symmetric(
                                 horizontal: 8.0, vertical: 5.0),
                             elevation: 10.0,
@@ -121,6 +123,7 @@ class _HomeState extends State<Home> {
                                   ),
                                   Container(
                                     padding: EdgeInsets.only(left: 20.0),
+                                    width: MediaQuery.of(context).size.width * 0.65,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
@@ -134,7 +137,8 @@ class _HomeState extends State<Home> {
                                         ),
                                         Text(
                                             'Timing: ${post['openTime']} - ${post['closeTime']}'),
-                                        Text('Days: ${post['dayOfWeeksOpen'].toString()}', overflow: TextOverflow.ellipsis,)
+                                        Container(
+                                            child: Text('Days: ${post['dayOfWeeksOpen'].toString()}', overflow: TextOverflow.ellipsis,))
                                       ],
                                     ),
                                   ),

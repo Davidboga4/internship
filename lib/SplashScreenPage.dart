@@ -27,17 +27,17 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         img2 = true;
       });
     });
-    Timer(Duration(milliseconds: 1200), (){
+    Timer(Duration(milliseconds: 1100), (){
       setState(() {
         img3 = true;
       });
     });
-    Timer(Duration(milliseconds: 1800), (){
+    Timer(Duration(milliseconds: 1300), (){
       setState(() {
         img4 = true;
       });
     });
-    Timer(Duration(milliseconds: 2400), (){
+    Timer(Duration(milliseconds: 1500), (){
       setState(() {
         img5 = true;
       });
@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   Widget animateImages(String imagePath, boolVar, double l, double r, double t, double b, double width){
     return new AnimatedOpacity(
       opacity: boolVar ? 1.0 : 0.0,
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 400),
       child: Container(
         width: width,
         margin: EdgeInsets.only(left: l, right: r, top: t, bottom: b),
